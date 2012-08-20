@@ -4,6 +4,8 @@
 call pathogen#infect()
 call pathogen#helptags()
 
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
 " ================================================================
 " Minimal settings 
@@ -68,7 +70,7 @@ map <right> <nop>
 
 
 " ================================================================
-" VIM UI
+" VIM Interface
 " ================================================================
 
 set wildmenu                    " turn on the WiLd menu
@@ -301,8 +303,5 @@ inoremap ' <c-r>=QuoteDelim("'")<CR>
 " Plug-in specific changes
 " ================================================================
 
-" NERDTree config
-nmap <leader>nt :NERDTree<cr>
-
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+" Vundle
+Bundle 'gmarik/vundle'
