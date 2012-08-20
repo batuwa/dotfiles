@@ -1,8 +1,8 @@
 " ================================================================
 "   Pathogen specific
 " ================================================================
-call pathogen#infect()
-call pathogen#helptags()
+" call pathogen#infect()
+" call pathogen#helptags()
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -112,10 +112,10 @@ set novisualbell
 set t_vb=
 set tm=500
 
-set foldenable                  " auto fold code
+set foldenable                                " auto fold code
 
 "" Whitespace highlighting
-set list listchars=tab:\ \ ,trail:· " how the whitespaces look like
+set list listchars=tab:\ \ ,trail:·           " how the whitespaces look like
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 
@@ -134,14 +134,12 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
 
-    set lines=60           " height = 50 lines
-    set columns=150        " width = 100 columns
+    set lines=60                                        " height = 50 lines
+    set columns=150                                     " width = 100 columns
 
-    " Change colorscheme
-    colorscheme desert
+    colorscheme desert                                  " change colorscheme"
 
-    " Change the font for GUI
-    set guifont=Inconsolata\ 11
+    set guifont=Inconsolata\ 11                         " change the font for GUI
 
     " highlight current line in active window
     set cursorline
@@ -166,25 +164,25 @@ set noswapfile
 " ================================================================
 " Text, tab and indent related
 " ================================================================
-set expandtab			" use spaces instead of tabs
+set expandtab                   " use spaces instead of tabs
 set smarttab                    " be smart when using tabs
 
-set shiftwidth=4		" 1 tab == 4 spaces
+set shiftwidth=4                " 1 tab == 4 spaces
 set tabstop=4
 
-set lbr				" linebreak on 500 characters
+set lbr                         " linebreak on 500 characters
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+set ai                          "Auto indent
+set si                          "Smart indent
+set wrap                        "Wrap lines
 
 
 " ================================================================
 " Moving around, tabs, windows and buffers
 " ================================================================
-map <leader>bd :Bclose<cr>	" Close the current buffer
-map <leader>ba :1,1000 bd!<cr>  " Close all the buffers
+map <leader>bd :Bclose<cr>	            " Close the current buffer
+map <leader>ba :1,1000 bd!<cr>          " Close all the buffers
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -220,21 +218,21 @@ set viminfo^=%
 " ================================================================
 " Always show the status line
 if has('cmdline_info')
-    set ruler                   " show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
-    set showcmd                 " show partial commands in status line and
-                                    " selected characters/lines in visual mode
+    set ruler                                               " show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)      " a ruler on steroids
+    set showcmd                                             " show partial commands in status line and
+                                                            " selected characters/lines in visual mode
 endif
 
 if has('statusline')
     set laststatus=2
 
     " Broken down into easily includeable segments
-    set statusline=%<%f\    " Filename
-    set statusline+=%w%h%m%r " Options
-    set statusline+=\ [%{&ff}/%Y]            " filetype
-    set statusline+=\ [%{getcwd()}]          " current dir
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    set statusline=%<%f\                                    " Filename
+    set statusline+=%w%h%m%r                                " Options
+    set statusline+=\ [%{&ff}/%Y]                           " filetype
+    set statusline+=\ [%{getcwd()}]                         " current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%                 " Right aligned file nav info
 endif
 
 
