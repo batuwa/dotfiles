@@ -137,7 +137,7 @@ if has("gui_running")
     set lines=60                                        " height = 50 lines
     set columns=150                                     " width = 100 columns
 
-    colorscheme desert                                  " change colorscheme"
+    colorscheme desert                                  " change colorscheme
 
     set guifont=Inconsolata\ 11                         " change the font for GUI
 
@@ -181,7 +181,7 @@ set wrap                        "Wrap lines
 " ================================================================
 " Moving around, tabs, windows and buffers
 " ================================================================
-map <leader>bd :Bclose<cr>	            " Close the current buffer
+map <leader>bd :Bclose<cr>              " Close the current buffer
 map <leader>ba :1,1000 bd!<cr>          " Close all the buffers
 
 " Useful mappings for managing tabs
@@ -255,51 +255,15 @@ map <leader>s? z=
 map <leader>pp :setlocal paste!<cr>
 
 " ================================================================
-" Matching pairs
-" ================================================================
-" Map the auto-close for non-quotes
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-autocmd Syntax html,vim inoremap < <lt>><Left>
-
-" Function to check next character
-function! ClosePair(char)
-if getline('.')[col('.') - 1] == a:char
-return "\<Right>"
-else
-return a:char
-endif
-endf
-
-" Map closing characters
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap } <c-r>=ClosePair('}')<CR>
-
-
-" Map the auto-close for quotes
-function! QuoteDelim(char)
-let line = getline('.')
-let col = col('.')
-if line[col - 2] == "\\"
-"Inserting a quoted quotation mark into the string
-return a:char
-elseif line[col - 1] == a:char
-"Escaping out of the string
-return "\<Right>"
-else
-"Starting a string
-return a:char.a:char."\<Left>"
-endif
-endf 
-
-inoremap " <c-r>=QuoteDelim('"')<CR>
-inoremap ' <c-r>=QuoteDelim("'")<CR>
-
-" ================================================================
 " Plug-in specific changes
 " ================================================================
 
 " Vundle
 Bundle 'gmarik/vundle'
+
+" Bundle 'scrooloose/nerdtree'
+Bundle 'nathanaelkane/vim-indent-guides'
+
+Bundle 'AutoClose'
+
+Bundle 'git://git.wincent.com/command-t.git'
