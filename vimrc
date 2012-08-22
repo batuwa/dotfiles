@@ -26,6 +26,7 @@ set ffs=unix,dos,mac         " use Unix as the standard file type
 set title                    " show title in console title bar
 set autoread                 " set to auto read when a file is changed from the outside
 set ruler                    " always show current position
+set laststatus=2             " so that powerline status bar works all the time
 
 " ================================================================
 " General Settings
@@ -50,7 +51,7 @@ let g:mapleader = ","
 nmap <F1> :previous<CR>                   " map F1 to open previous buffer
 nmap <F2> :next<CR>                       " map F2 to open next buffer
  
-nmap <leader>ev :sp ~/.vimrc<cr>          " edit my .vimrc file in a split
+nmap <leader>ev :edit ~/.vimrc<cr>          " edit my .vimrc file in a split
 nmap <leader>sv :source ~/.vimrc<cr>      " update the system settings from my vimrc file
 
 " Ignore compiled files
@@ -133,6 +134,7 @@ if has("gui_running")
     set guioptions+=e
     set t_Co=256
     set guitablabel=%M\ %t
+    set transparency=5                                  " set transparent window
 
     set lines=60                                        " height = 50 lines
     set columns=150                                     " width = 100 columns
@@ -169,20 +171,19 @@ set smarttab                    " be smart when using tabs
 
 set shiftwidth=4                " 1 tab == 4 spaces
 set tabstop=4
+set softtabstop=4
 
 set lbr                         " linebreak on 500 characters
 set tw=500
 
-set ai                          "Auto indent
-set si                          "Smart indent
-set wrap                        "Wrap lines
+"set wrap                        "Wrap lines
 
 
 " ================================================================
 " Moving around, tabs, windows and buffers
 " ================================================================
 map <leader>bd :Bclose<cr>              " Close the current buffer
-map <leader>ba :1,1000 bd!<cr>          " Close all the buffers
+map <leader>ba :1,1000 bd!<cr>          " Close all the buffer
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -212,30 +213,6 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
-
-" ================================================================
-" Status line
-" ================================================================
-" Always show the status line
-if has('cmdline_info')
-    set ruler                                               " show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)      " a ruler on steroids
-    set showcmd                                             " show partial commands in status line and
-                                                            " selected characters/lines in visual mode
-endif
-
-if has('statusline')
-    set laststatus=2
-
-    " Broken down into easily includeable segments
-    set statusline=%<%f\                                    " Filename
-    set statusline+=%w%h%m%r                                " Options
-    set statusline+=\ [%{&ff}/%Y]                           " filetype
-    set statusline+=\ [%{getcwd()}]                         " current dir
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%                 " Right aligned file nav info
-endif
-
-
 " ================================================================
 " Spell checking
 " ================================================================
@@ -255,15 +232,32 @@ map <leader>s? z=
 map <leader>pp :setlocal paste!<cr>
 
 " ================================================================
-" Plug-in specific changes
+" Vim plugins managed by Vundle
 " ================================================================
-
-" Vundle
 Bundle 'gmarik/vundle'
 
-" Bundle 'scrooloose/nerdtree'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'kevinw/pyflakes-vim'
+Bundle 'tpope/vim-fugitive'
 Bundle 'nathanaelkane/vim-indent-guides'
 
 Bundle 'AutoClose'
+Bundle 'ctrlp.vim'
 
-Bundle 'git://git.wincent.com/command-t.git'
+" ================================================================
+" Plug-in specific changes
+" ================================================================
+
+"" Enable fancymode for vim-powerline
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'full'
+
+"" Indent guide setup
+let g:indent_guides_guide_size = 1
+
+" ctrlp.vim mappings
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_map = ',x'
+let g:ctrlp_working_path_mode = 2
+map ,b :CtrlPBuffer<CR>
+map ,z :ClearCtrlPCache<CR>:CtrlP<CR>
