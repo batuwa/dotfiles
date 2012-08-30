@@ -69,6 +69,9 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
+" Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
 
 " ================================================================
 " VIM Interface
@@ -113,7 +116,7 @@ set novisualbell
 set t_vb=
 set tm=500
 
-set foldenable                                " auto fold code
+"set foldenable                                " auto fold code
 
 "" Whitespace highlighting
 set list listchars=tab:\ \ ,trail:·           " how the whitespaces look like
@@ -134,7 +137,7 @@ if has("gui_running")
     set guioptions+=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set transparency=5                                  " set transparent window
+"   set transparency=5                                  " set transparent window
 
     set lines=60                                        " height = 50 lines
     set columns=150                                     " width = 100 columns
@@ -175,9 +178,6 @@ set softtabstop=4
 
 set lbr                         " linebreak on 500 characters
 set tw=500
-
-"set wrap                        "Wrap lines
-
 
 " ================================================================
 " Moving around, tabs, windows and buffers
@@ -229,7 +229,8 @@ map <leader>s? z=
 " Misc
 " ================================================================
 " Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
+map <leader>pp :set paste!<cr>
+set showmode
 
 " ================================================================
 " Vim plugins managed by Vundle
@@ -248,11 +249,11 @@ Bundle 'ctrlp.vim'
 " Plug-in specific changes
 " ================================================================
 
-"" Enable fancymode for vim-powerline
+" Enable fancymode for vim-powerline
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'full'
 
-"" Indent guide setup
+" Indent guide setup
 let g:indent_guides_guide_size = 1
 
 " ctrlp.vim mappings
@@ -261,3 +262,4 @@ let g:ctrlp_map = ',x'
 let g:ctrlp_working_path_mode = 2
 map ,b :CtrlPBuffer<CR>
 map ,z :ClearCtrlPCache<CR>:CtrlP<CR>
+
