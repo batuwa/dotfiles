@@ -141,7 +141,7 @@ if has("gui_running")
 
     colorscheme desert                                  " change colorscheme
 
-    set guifont=Inconsolata\ 11                         " change the font for GUI
+    set guifont=Monaco:h12                              " change the font for GUI
 
     " highlight current line in active window
     set cursorline
@@ -240,6 +240,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'mileszs/ack.vim'
 
 Bundle 'AutoClose'
 Bundle 'ctrlp.vim'
@@ -261,3 +262,4 @@ let g:ctrlp_map = ',x'
 let g:ctrlp_working_path_mode = 2
 map ,b :CtrlPBuffer<CR>
 map ,z :ClearCtrlPCache<CR>:CtrlP<CR>
+
