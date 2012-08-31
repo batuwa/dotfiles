@@ -137,7 +137,7 @@ if has("gui_running")
     set guioptions+=e
     set t_Co=256
     set guitablabel=%M\ %t
-"   set transparency=5                                  " set transparent window
+    set transparency=5                                  " set transparent window
 
     set lines=60                                        " height = 50 lines
     set columns=150                                     " width = 100 columns
